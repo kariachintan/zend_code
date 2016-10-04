@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<mappings>      
+    
+    <mapping stereotype="phpnotes_services_phonedb_dto_UserCodeDTO" table="PHONEDB.USERCODES">
+
+        <propertymapper class="phpnotes_services_entity_dao_XMLPropertyMapper" />
+        
+
+        <properties>
+            <property name="Id" column="USERCODEID" /> 
+                                 
+            <property name="Description" column="DESCRIPTION" />  
+                        
+            <property name="Creator" column="CREATEDBY" />
+            <property name="CreationDate" column="CREATEDAT" />
+            <property name="Modifier" column="MODIFIEDBY" />
+            <property name="ModificationDate" column="MODIFIEDAT" />
+        </properties>
+
+    </mapping>
+    
+</mappings>

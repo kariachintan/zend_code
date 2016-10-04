@@ -1,0 +1,249 @@
+<?php require_once('coreapp/lib/HTML/header.phtml') ?>
+
+<style>
+	table.employeeview,table.employeeview-un,table.employeeview-nonmatching,table.employeeview-zerovm {
+		width: 80%;
+		margin: auto;
+	}
+	
+	table.employeeview td,table.employeeview-un td,table.employeeview-nonmatching td,table.employeeview-zerovm td {
+		padding: 5px;
+		border: 1px solid #333;
+	}
+	
+	table.employeeview tr.header td {
+		color: #333333;
+		background-color: #cccccc;
+		font-weight: bold;
+	}
+	
+	table.employeeview-un tr.header td {
+		color: #888888;
+		background-color: #eeeeee;	
+	}
+	
+	table.employeeview-nonmatching tr.header td {
+		color: #888888;
+		background-color: #eeeeee;	
+	}
+	
+	table.employeeview-zerovm tr.header td {
+		color: #888888;
+		background-color: #eeeeee;	
+	}
+	
+	div.exportdiv {
+		clear: both;
+    height: 30px;
+    margin: auto;
+    text-align: right;
+    width: 80%;
+	}
+	
+	span.sectiontitle {
+		font-weight: bold;
+		font-size: 1.1em;
+		color: #005299;
+	}
+	
+	span.sectiontitle-neg {
+		font-weight: bold;
+		font-size: 1.1em;
+		color: #cd0a0a;
+	}
+	
+	div.chapSection {
+		margin-left: 20px;
+		margin-bottom: 10px;
+	}
+	
+	div.summary {
+		padding: 10px;
+		margin-left: 5px;
+		margin-bottom: 50px;
+		font-size: 1.2em;
+		border-bottom: 1px solid #ccc;
+	}
+	
+	div#scrolltotop {
+		position:fixed;
+		bottom:50px;
+		right:5px;
+		background-color: #ccc;
+		height: 20px;
+		text-align: center;
+		padding: 4px;
+		display: none;
+		
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+		filter: alpha(opacity=80);
+		-moz-opacity: 0.8;
+		-khtml-opacity: 0.8;
+		opacity: 0.8;
+		
+		cursor: pointer;
+		line-height: 20px;
+		
+		font-size: 13px;
+		
+		border: 1px solid #999;
+    border-radius: 5px;
+		-moz-border-radius: 5px;
+		
+		color: #777;
+	}
+	
+	div#scrolltotop:hover {
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+		filter: alpha(opacity=100);
+		-moz-opacity: 1;
+		-khtml-opacity: 1;
+		opacity: 1;
+	}
+	
+	.sectionlink {
+		text-decoration: none;
+		line-height: 1.1em;
+		padding-top: 4px;
+		color:#333;
+	}
+	
+	.subsectionlink {
+		text-decoration: none;
+		font-size: 0.8em;
+	}
+</style>
+
+<script>
+	
+	Event.observe(window, 'scroll', function() {
+		var scroll = document.viewport.getScrollOffsets();
+		if (scroll.top>50) {
+			$('scrolltotop').style.display = 'block';
+		} else {
+			$('scrolltotop').style.display = 'none';
+		}
+	});
+	
+	function jumpTo(id) {
+		var el = document.getElementById(id);
+		
+    el.scrollIntoView(true);
+		
+		var l = location.href;
+		var index = l.indexOf('#');
+		if (index > 0) {
+			l = l.substring(0, index);
+		}
+		location.href = l + "#" + id;
+	}
+</script>
+
+<table class="tblheader">
+    <tr>
+        <td align="left">
+            <h1><?php
+                echo $this->escape($this->title);
+                ?></h1>
+        </td>
+    </tr>
+</table>
+
+<div id="scrolltotop" onclick="window.scrollTo(0,0);">
+	Back to top
+</div>
+
+
+
+<!-- Assigned -->
+<div style="margin-top: 30px">
+	<?php if (!empty($this->assigned)):?>
+	<span class="sectiontitle" id='assigned'>The following employees were successfully assigned:</span><br/><br/><br/>
+		<?php foreach($this->assigned as $c =>$arr) :?>
+			<div class="chapSection" id="a-<?php echo md5($c)?>">Description: <span style="font-weight: bold;"><?php echo $this->escape($this->reflib->getDescription())?></span></div>
+			<div class="exportdiv">
+				<a href="/referencelibrary/employeeassoc/exportemployees?which=assigned&reflib=<?php echo $c?>">Export to CSV</a>
+			</div>
+			<table class="employeeview">
+				<tr class="header">
+					<td>Employee Number</td>
+					<td>Full name</td>
+					<!-- <td><? //echo LOCALIZED_VM; ?> #</td> -->
+				</tr>
+				<?php foreach($arr as $a):?>
+				<tr>
+					<td><?php echo $this->escape($a['EMPLOYEENUM'])?></td>
+					<td><?php echo $this->escape($a['FULLNAME'])?></td>
+					<!-- <td><?php // echo $this->escape($a['VOICEMAIL'])?></td> -->
+				</tr>
+				<?php endforeach ?>
+			</table>
+			<div class="exportdiv">
+				<a href="/referencelibrary/employeeassoc/exportemployees?which=assigned&reflib=<?php echo $c?>">Export to CSV</a>
+			</div>
+		<?php endforeach?>
+	<?php else:?>
+			<span class="sectiontitle">No Assignments were made.</span>
+	<?php endif?>
+</div>
+
+
+<!-- unassigned -->
+<div style="margin-top: 30px">
+	<?php if (!empty($this->nonAssigned)):?>
+	<span class="sectiontitle" id='assigned'>The following employees were successfully removed:</span><br/><br/><br/>
+		<?php foreach($this->nonAssigned as $c =>$arr) :?>
+			<div class="chapSection" id="a-<?php echo md5($c)?>">Description: <span style="font-weight: bold;"><?php echo $this->escape($this->reflib->getDescription())?></span></div>
+			<div class="exportdiv">
+				<a href="/referencelibrary/employeeassoc/exportemployees?which=nonassigned&reflib=<?php echo $c?>">Export to CSV</a>
+			</div>
+			<table class="employeeview">
+				<tr class="header">
+					<td>Employee Number</td>
+					<td>Full name</td>
+					<!-- <td><? //echo LOCALIZED_VM; ?> #</td> -->
+				</tr>
+				<?php foreach($arr as $a):?>
+				<tr>
+					<td><?php echo $this->escape($a['EMPLOYEENUM'])?></td>
+					<td><?php echo $this->escape($a['FULLNAME'])?></td>
+					<!-- <td><?php // echo $this->escape($a['VOICEMAIL'])?></td> -->
+				</tr>
+				<?php endforeach ?>
+			</table>
+			<div class="exportdiv">
+				<a href="/referencelibrary/employeeassoc/exportemployees?which=nonassigned&reflib=<?php echo $c?>">Export to CSV</a>
+			</div>
+		<?php endforeach?>	
+		<?php endif?>
+</div>
+
+
+
+<!-- invalid -->
+<div style="margin-top: 30px">
+	<?php if (!empty($this->invalid)):?>
+		<span class="sectiontitle-neg" id="invalid">The following employee numbers are invalid:</span><br/><br/><br/>
+		<div class="exportdiv">
+			<a href="/referencelibrary/employeeassoc/exportemployees?which=invalid">Export to CSV</a>
+		</div>
+		<table class="employeeview-un">
+			<tr class="header">
+				<td>Number</td>
+			</tr>
+			<?php foreach($this->invalid as $a):?>
+			<tr>
+				<td><?php echo $a?></td>
+			</tr>
+			<?php endforeach ?>
+		</table>
+		<div class="exportdiv">
+			<a href="/referencelibrary/employeeassoc/exportemployees?which=invalid">Export to CSV</a>
+		</div>
+	<?php endif?>
+</div>
+
+<?php
+echo $this->controls->render();
+?>
+<?php require_once('coreapp/lib/HTML/footer.phtml') ?>

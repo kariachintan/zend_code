@@ -1,0 +1,24 @@
+<?php
+
+/*
+ * This is the default details action script. To override this, place a details.phtml file in your
+ * [modulename]/views/scripts/[controllername]/ directory.
+ */
+
+?>
+
+<?php require_once('coreapp/lib/HTML/header.phtml') ?>
+
+<div id="test">
+<table class="tblheader">
+	<tr>
+		<td align="left"><h1><?php echo $this->escape($this->title); ?></h1></td>		
+	</tr>
+</table>
+</div>
+<?php 
+	echo $this->table->render();
+	echo $this->controls->render();
+?>
+
+<?php require_once('coreapp/lib/HTML/footer.phtml') ?>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<mappings>   
+    <mapping stereotype="phpnotes_services_referencelibrary_dto_EmployeeListingDTO">
+             <propertymapper class="phpnotes_services_entity_dao_XMLPropertyMapper" />
+
+         <sql>
+            <select>
+                <![CDATA[
+                    SELECT  
+                    DISTINCT C.REFLIBHEADERID as REFLIBHEADERID,
+                     B.EMPLOYEENUM AS EMPLOYEENUM,
+                     B.FULLNAME as FULLNAME,
+                     C.DESCRIPTION AS DESCRIPTION,
+                     C.DOCTYPEID AS DOCTYPEID,
+                     C.STARTDATETIME AS STARTDATETIME,
+                     C.ENDDATETIME AS ENDDATETIME,
+                     C.DOCPRIORITYID AS DOCPRIORITYID,
+                     C.CREATEDBY AS CREATEDBY,
+                     C.CREATEDAT AS CREATEDAT,
+                     C.MODIFIEDBY AS MODIFIEDBY,
+                     C.MODIFIEDAT AS MODIFIEDAT,
+                    E.LOCATION AS LOCATION
+                    FROM ATTACHMENT.REFLIBEMPLOYEEASSOC A
+                    INNER JOIN EMPLOYEE.EMPLOYEES B ON A.EMPLOYEEID=B.EMPLOYEEID 
+                    INNER JOIN ATTACHMENT.REFERENCELIBRARYHEADER C ON C.REFLIBHEADERID = A.REFLIBRARYHEADERID
+                    INNER JOIN ATTACHMENT.ATTACHMENTAPPLICABILITIES D ON C.REFLIBHEADERID = D.APPLICABLEID 
+                    INNER JOIN ATTACHMENT.ATTACHMENTS E ON D.ATTACHMENTID = E.ATTACHMENTID AND  D.APPLICABLETYPE    
+                    IN ( 'phpnotes_services_ReferenceLibrary_dto_CoverPicDTO') 
+                ]]>
+            </select>
+        </sql>
+
+        <properties>
+            <property name="Id" column="C.REFLIBHEADERID" alias="REFLIBHEADERID"/>                         
+            <property name="EmployeeNum" column="B.EMPLOYEENUM" alias="EMPLOYEENUM"/>  
+            <property name="Description" column="C.DESCRIPTION" alias="DESCRIPTION" />
+            <property name="FullName" column="B.FULLNAME" alias="FULLNAME"/>  
+            <property name="DocTypeId" column="C.DOCTYPEID" alias="DOCTYPEID" />
+            <property name="StartDateTime" column="C.STARTDATETIME" alias="STARTDATETIME" />
+            <property name="EndDateTime" column="C.ENDDATETIME" alias="ENDDATETIME"/>
+            <property name="DocPriorityId" column="C.DOCPRIORITYID" alias="DOCPRIORITYID" />        
+            <property name="Creator" column="C.CREATEDBY" alias="CREATEDBY" />
+            <property name="CreationDate" column="C.CREATEDAT" alias="CREATEDAT" />
+            <property name="Modifier" column="C.MODIFIEDBY" alias="MODIFIEDBY" />
+            <property name="ModificationDate" column="C.MODIFIEDAT" alias="MODIFIEDAT" />
+            <property name="Location" column="E.LOCATION" alias="LOCATION" />
+           
+        </properties>
+    </mapping>    
+</mappings>

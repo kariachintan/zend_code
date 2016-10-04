@@ -1,0 +1,11 @@
+USE COREAPP;
+
+-- Updating wrongly assigned DOCPRIORITYTYPES in database 
+
+SELECT @referencelibrary:=CODEID as CODEID from CODES where PARENTCODEID is null AND NAME='REFERENCELIBRARY';
+SELECT @library:=CODEID as CODEID from CODES where PARENTCODEID=@referencelibrary AND NAME='LIBRARY';
+SELECT @doctypes:=CODEID as CODEID from CODES where PARENTCODEID=@library AND NAME='DOCTYPES';
+SELECT @docprioritytypes:=CODEID as CODEID from CODES where PARENTCODEID=@library AND NAME='DOCPRIORITYTYPES';
+
+
+UPDATE CODES SET PARENTCODEID = @docprioritytypes WHERE NAME IN ('HOTLIST','NORMAL','PRIVATE') AND PARENTCODEID = @doctypes;
