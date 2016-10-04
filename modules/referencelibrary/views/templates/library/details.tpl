@@ -1,5 +1,3 @@
-
-
 {$Core_Form_Submit.data}
 {$Core_Form_Action.data}
 {$Id.data}
@@ -7,7 +5,7 @@
 
 <table width=100%>
     <tr>
-        <td width=50% >
+        <td width=50%>
 
             <div class="formElement">
                 {$Description.label}
@@ -58,15 +56,17 @@
     </tr>
     <tr>
         <td valign=top width=50%>
-            <div  class='form-section-header'>Attachments</div>
+            <div class='form-section-header'>Attachments</div>
             <br>
-            <div  class='form-section-body' id="attachment-container">
+            <div class='form-section-body' id="attachment-container">
 
             </div>
             {if $AttachmentError.value neq ''}
                 <div class='form-section-body' id="attachment-errors">
                     <div class="formElement">
-                        <ul class='errors'><li>{$AttachmentError.value}</li></ul>
+                        <ul class='errors'>
+                            <li>{$AttachmentError.value}</li>
+                        </ul>
                     </div>
                 </div>
             {/if}

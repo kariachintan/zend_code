@@ -16,184 +16,199 @@ $imgUnchecked = Zend_Registry::get('public_url') . "/images/interface/unchecked_
 $imgChecked = Zend_Registry::get('public_url') . "/images/interface/checked_black.png";
 $iconTransaction = Zend_Registry::get('public_url') . "/images/16x16/date.png";
 ?>
-<script src="<? echo Zend_Registry::get('public_url'); ?>/scripts/jquery-migrate-1.2.1.min.js"></script>
+	<script src="<? echo Zend_Registry::get('public_url'); ?>/scripts/jquery-migrate-1.2.1.min.js"></script>
 
-<link rel="stylesheet" type="text/css" href="<? echo Zend_Registry::get('public_url'); ?>/scripts/jquery-ui/1.11.1/jquery-ui.min.css"/>
-<link rel="stylesheet" type="text/css" href="<? echo Zend_Registry::get('public_url'); ?>/scripts/jquery-ui/1.11.1/jquery-ui.structure.min.css"/>
-<link rel="stylesheet" type="text/css" href="<? echo Zend_Registry::get('public_url'); ?>/scripts/jquery-ui/1.11.1/jquery-ui.theme.min.css"/>
+	<link rel="stylesheet" type="text/css"
+	      href="<? echo Zend_Registry::get('public_url'); ?>/scripts/jquery-ui/1.11.1/jquery-ui.min.css"/>
+	<link rel="stylesheet" type="text/css"
+	      href="<? echo Zend_Registry::get('public_url'); ?>/scripts/jquery-ui/1.11.1/jquery-ui.structure.min.css"/>
+	<link rel="stylesheet" type="text/css"
+	      href="<? echo Zend_Registry::get('public_url'); ?>/scripts/jquery-ui/1.11.1/jquery-ui.theme.min.css"/>
 
-<link rel="stylesheet" href="<? echo Zend_Registry::get('public_url'); ?>/scripts/jstree/themes/default/style.min.css" />
-<link rel="stylesheet" href="<? echo Zend_Registry::get('public_url'); ?>/scripts/jquery-handsontable/0.10.5/jquery.handsontable.full.css" />
-<style>
-    div.form-section-header {
-        border-bottom: 1px solid #069;
-        color: #069;
-        font-size: 1.8em;
-        font-weight: bold;
-        margin-right: 20px;
-    }
-</style>
-<script src="<? echo Zend_Registry::get('public_url'); ?>/scripts/jstree/jstree.min.js"></script>
-<script src="<? echo Zend_Registry::get('public_url'); ?>/scripts/jquery.formatCurrency-1.4.0.min.js"></script>
+	<link rel="stylesheet"
+	      href="<? echo Zend_Registry::get('public_url'); ?>/scripts/jstree/themes/default/style.min.css"/>
+	<link rel="stylesheet"
+	      href="<? echo Zend_Registry::get('public_url'); ?>/scripts/jquery-handsontable/0.10.5/jquery.handsontable.full.css"/>
+	<style>
+		div.form-section-header {
+			border-bottom: 1px solid #069;
+			color: #069;
+			font-size: 1.8em;
+			font-weight: bold;
+			margin-right: 20px;
+		}
+	</style>
+	<script src="<? echo Zend_Registry::get('public_url'); ?>/scripts/jstree/jstree.min.js"></script>
+	<script src="<? echo Zend_Registry::get('public_url'); ?>/scripts/jquery.formatCurrency-1.4.0.min.js"></script>
 
-<script src="<? echo Zend_Registry::get('public_url'); ?>/scripts/jquery-handsontable/0.10.5/jquery.handsontable.full.js"></script>
+	<script
+		src="<? echo Zend_Registry::get('public_url'); ?>/scripts/jquery-handsontable/0.10.5/jquery.handsontable.full.js"></script>
 
-<script type="text/javascript">
+	<script type="text/javascript">
 
-    function addAttachment() {
-        var copy = $('#AttachmentContainer0').clone();
-        var l = $(".attachment-container").children().length;
-        if (l == 2) {
-            copy.attr("id", "AttachmentContainer" + l);
-            copy.find(".delete-image").css('display', 'block');
-            copy.find(".attachment-input").attr("id", "SimpleAttachment" + l);
-            copy.find(".attachment-input").val('');
-            $("#AttachmentDiv").append(copy);
-        }
-
-
-    }
-
-    function deleteUploadedAttachment(attId,cnt) {  
-
-
-            if (confirm("Delete Attachment?")) {
-                $('#DeletedAttachment' + attId).val(attId);
-                $('#UploadedRow' + attId).hide();
-
-                if(cnt == 2)
-                {
-                    $('.loader').show();
-                    
-                }
-                if(cnt == 1){
-                    $('.loader2').show();
-                    
-                }
-        }
-    }
-
-    function deleteAttachmentField(field) {
-        $(field).closest(".attachment-container").remove();
-    }
-    $(function() {
-        var attachments = $('#attachmentsElement').detach();
-        $('#attachment-container').append(attachments);
+		function addAttachment() {
+			var copy = $('#AttachmentContainer0').clone();
+			var l = $(".attachment-container").children().length;
+			if (l == 2) {
+				copy.attr("id", "AttachmentContainer" + l);
+				copy.find(".delete-image").css('display', 'block');
+				copy.find(".attachment-input").attr("id", "SimpleAttachment" + l);
+				copy.find(".attachment-input").val('');
+				$("#AttachmentDiv").append(copy);
+			}
 
 
-    });
+		}
 
-</script>
+		function deleteUploadedAttachment(attId, cnt) {
 
-<table class="tblheader">
-    <tr>
-        <td align="left">
-            <h1><?php
-                echo $this->escape($this->title);
-                ?></h1>
-        </td>
-    </tr>
-</table>
+
+			if (confirm("Delete Attachment?")) {
+				$('#DeletedAttachment' + attId).val(attId);
+				$('#UploadedRow' + attId).hide();
+
+				if (cnt == 2) {
+					$('.loader').show();
+
+				}
+				if (cnt == 1) {
+					$('.loader2').show();
+
+				}
+			}
+		}
+
+		function deleteAttachmentField(field) {
+			$(field).closest(".attachment-container").remove();
+		}
+		$(function () {
+			var attachments = $('#attachmentsElement').detach();
+			$('#attachment-container').append(attachments);
+
+
+		});
+
+	</script>
+
+	<table class="tblheader">
+		<tr>
+			<td align="left">
+				<h1><?php
+					echo $this->escape($this->title);
+					?></h1>
+			</td>
+		</tr>
+	</table>
 
 <?php
 echo $this->form->render();
 ?>
 
-<!-- START: Attachments -->
-<div id="attachmentsElement" class="formElement">
-    <div class="inputContainer" style="display:inline-block;">	
+	<!-- START: Attachments -->
+	<div id="attachmentsElement" class="formElement">
+		<div class="inputContainer" style="display:inline-block;">
 
 
-        <div id="AttachmentDiv" class="loader" id="loader">
-            <div id="AttachmentContainer0" class="attachment-container">
-                <div style="float:left;width:500px; padding-bottom: 3px;">
-                    <b style="color: #069;"> Attach Reference Document:   </b> <span style="color: red">*</span> <input type="file" id="SimpleAttachment0" class="attachment-input" name="SimpleAttachment[]"/>
-                </div>
-                <div style="float:left;width:20px; padding-top:3px">
-                    <img src="images/32x32/cross.png" style="cursor:pointer; display: none;" onclick="deleteAttachmentField(this)" class="delete-image" width="16" />
-                </div>
-            </div>
+			<div id="AttachmentDiv" class="loader" id="loader">
+				<div id="AttachmentContainer0" class="attachment-container">
+					<div style="float:left;width:500px; padding-bottom: 3px;">
+						<b style="color: #069;"> Attach Reference Document: </b> <span style="color: red">*</span>
+						<input type="file" id="SimpleAttachment0" class="attachment-input" name="SimpleAttachment[]"/>
+					</div>
+					<div style="float:left;width:20px; padding-top:3px">
+						<img src="images/32x32/cross.png" style="cursor:pointer; display: none;"
+						     onclick="deleteAttachmentField(this)" class="delete-image" width="16"/>
+					</div>
+				</div>
 
-            <div style="font-size: 8pt; color: #666666; width:410px;padding-top: 5px;">
-                The maximum upload size is 32 MB. Only files with the following extensions may be uploaded: <span style="font-style: italic"><?php echo implode(" ", $this->filetypes); ?>.</span>		
-            </div>
-        </div>
+				<div style="font-size: 8pt; color: #666666; width:410px;padding-top: 5px;">
+					The maximum upload size is 32 MB. Only files with the following extensions may be uploaded: <span
+						style="font-style: italic"><?php echo implode(" ", $this->filetypes); ?>.</span>
+				</div>
+			</div>
 
-        <div id="AttachmentDiv" class="loader2" id="loader2">
-            <div id="AttachmentContainer0" class="attachment-container" >
-                <div style="float:left;width:400px; padding-bottom: 3px;">
-                    <b style="color: #069;">  Attach Cover Pic Image:   </b><span style="color: red">*</span> <input type="file" id="SimpleAttachmentCover" class="attachment-input" name="SimpleAttachmentCover"/>
-                </div>
-                <div style="float:left;width:20px; padding-top:3px">
-                    <img src="images/32x32/cross.png" style="cursor:pointer; display: none;" onclick="deleteAttachmentField(this)" class="delete-image" width="16" />
-                </div>
-            </div>
-            <div style="font-size: 8pt; color: #666666; width:410px;padding-top: 5px;">
-                Please upload 80*80 size image. Only files with the following extensions may be uploaded: <span style="font-style: italic">png,gif,jpeg,jpg</span>		
-            </div>
-        </div>
+			<div id="AttachmentDiv" class="loader2" id="loader2">
+				<div id="AttachmentContainer0" class="attachment-container">
+					<div style="float:left;width:400px; padding-bottom: 3px;">
+						<b style="color: #069;"> Attach Cover Pic Image: </b><span style="color: red">*</span> <input
+							type="file" id="SimpleAttachmentCover" class="attachment-input"
+							name="SimpleAttachmentCover"/>
+					</div>
+					<div style="float:left;width:20px; padding-top:3px">
+						<img src="images/32x32/cross.png" style="cursor:pointer; display: none;"
+						     onclick="deleteAttachmentField(this)" class="delete-image" width="16"/>
+					</div>
+				</div>
+				<div style="font-size: 8pt; color: #666666; width:410px;padding-top: 5px;">
+					Please upload 80*80 size image. Only files with the following extensions may be uploaded: <span
+						style="font-style: italic">png,gif,jpeg,jpg</span>
+				</div>
+			</div>
 
-        <div>
-            <?php 
+			<div>
+				<?php
 
-            if (isset($this->attachments)) { ?>
-            <div class="loaderMain" id="loaderMain">
-                <table style="padding-bottom:10px; width: 300px;">
-                  <?php
-              
-                  if(!empty($this->attachments)){
-                      ?><br>
-                   
-                    <?php
-                      
-                  }
-                  
-                  ?>
-                    <?php 
-                  $cnt = 0;
-                    foreach ($this->attachments as $att): ?>
-                        <?php
+				if (isset($this->attachments)) { ?>
+					<div class="loaderMain" id="loaderMain">
+						<table style="padding-bottom:10px; width: 300px;">
+							<?php
 
-                        $id = $att['id'];
-                        
-                        $cnt= $cnt + 1;
-                        if ($id) {
-                            ?>
-                            <script type="text/javascript">
-                $(function() {
-                    $('.loader').hide();
-                    $('.loader2').hide();
-                });
-                            </script>
-                            <?php
-                        }
-                        ?>
+							if (!empty($this->attachments)) {
+								?><br>
 
-                        <tr id="UploadedRow<?php echo $id ?>">
-                            <td style="width:280px">
-                                    <a href='/referencelibrary/library/attachmentbyid?resource=<?php echo $att['id']?>'><?php hsc(ellipsis($att['filename'], 50)) ?></a>
-                                    <input type="hidden" id="DeletedAttachment<?php echo $id ?>" name="DeletedAttachment[]" value="0"/>
-                            </td>
-                            <td style="width:20px">
-                                <?php if (!$this->form->getReadOnly()) { ?>
-                                    <img src="images/32x32/cross.png" style="cursor:pointer" width="16" onclick="deleteUploadedAttachment(<?php echo $id ?>,<?php echo $cnt ?>)" />
-                                <?php } ?>
-                            </td>
-                        </tr>
-                    <?php endforeach ?>
-                </table>
-  </div>
-            <?php }
-            ?>
+								<?php
+
+							}
+
+							?>
+							<?php
+							$cnt = 0;
+							foreach ($this->attachments as $att): ?>
+								<?php
+
+								$id = $att['id'];
+
+								$cnt = $cnt + 1;
+							if ($id) {
+								?>
+								<script type="text/javascript">
+									$(function () {
+										$('.loader').hide();
+										$('.loader2').hide();
+									});
+								</script>
+							<?php
+							}
+							?>
+
+								<tr id="UploadedRow<?php echo $id ?>">
+									<td style="width:280px">
+										<a href='/referencelibrary/library/attachmentbyid?resource=<?php echo $att['id'] ?>'><?php hsc(ellipsis($att['filename'],
+												50)) ?></a>
+										<input type="hidden" id="DeletedAttachment<?php echo $id ?>"
+										       name="DeletedAttachment[]" value="0"/>
+									</td>
+									<td style="width:20px">
+										<?php if (!$this->form->getReadOnly()) { ?>
+											<img src="images/32x32/cross.png" style="cursor:pointer" width="16"
+											     onclick="deleteUploadedAttachment(<?php echo $id ?>,<?php echo $cnt ?>)"/>
+										<?php } ?>
+									</td>
+								</tr>
+							<?php endforeach ?>
+						</table>
+					</div>
+				<?php }
+				?>
 
 
-        </div>
+			</div>
 
 
-    </div>
-</div>
+		</div>
+	</div>
 
-<!-- FINISH: Attachments -->
+	<!-- FINISH: Attachments -->
 <?php
 echo $this->controls->render();
 require_once('coreapp/lib/HTML/footer.phtml')

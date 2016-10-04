@@ -9,16 +9,16 @@
 
 <?php require_once('coreapp/lib/HTML/header.phtml') ?>
 
-<div id="test">
-<table class="tblheader">
-	<tr>
-		<td align="left"><h1><?php echo $this->escape($this->title); ?></h1></td>		
-	</tr>
-</table>
-</div>
-<?php 
-	echo $this->table->render();
-	echo $this->controls->render();
+	<div id="test">
+		<table class="tblheader">
+			<tr>
+				<td align="left"><h1><?php echo $this->escape($this->title); ?></h1></td>
+			</tr>
+		</table>
+	</div>
+<?php
+echo $this->table->render();
+echo $this->controls->render();
 ?>
 
 <?php require_once('coreapp/lib/HTML/footer.phtml') ?>

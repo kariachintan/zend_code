@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<mappings>      
-    
-    <mapping stereotype="phpnotes_services_referencelibrary_dto_LibraryListingDTO">
-             <propertymapper class="phpnotes_services_entity_dao_XMLPropertyMapper" />
+<mappings>
 
-         <sql>
+    <mapping stereotype="phpnotes_services_referencelibrary_dto_LibraryListingDTO">
+        <propertymapper class="phpnotes_services_entity_dao_XMLPropertyMapper"/>
+
+        <sql>
             <select>
                 <![CDATA[
                      SELECT DISTINCT A.REFLIBHEADERID AS REFLIBHEADERID,
@@ -24,26 +24,26 @@
                      IN ( 'phpnotes_services_ReferenceLibrary_dto_CoverPicDTO') 
                 ]]>
             </select>
-            <insert />
-            <update />
-            <delete />
+            <insert/>
+            <update/>
+            <delete/>
         </sql>
 
         <properties>
-            <property name="Id" column="A.REFLIBHEADERID" alias="REFLIBHEADERID"/>                         
-            <property name="Description" column="A.DESCRIPTION" alias="DESCRIPTION" />
-            <property name="DocTypeId" column="A.DOCTYPEID" alias="DOCTYPEID" />
-            <property name="StartDateTime" column="A.STARTDATETIME" alias="STARTDATETIME" />
+            <property name="Id" column="A.REFLIBHEADERID" alias="REFLIBHEADERID"/>
+            <property name="Description" column="A.DESCRIPTION" alias="DESCRIPTION"/>
+            <property name="DocTypeId" column="A.DOCTYPEID" alias="DOCTYPEID"/>
+            <property name="StartDateTime" column="A.STARTDATETIME" alias="STARTDATETIME"/>
             <property name="EndDateTime" column="A.ENDDATETIME" alias="ENDDATETIME"/>
-            <property name="DocPriorityId" column="A.DOCPRIORITYID" alias="DOCPRIORITYID" />        
-            <property name="Creator" column="A.CREATEDBY" alias="CREATEDBY" />
-            <property name="CreationDate" column="A.CREATEDAT" alias="CREATEDAT" />
-            <property name="Modifier" column="A.MODIFIEDBY" alias="MODIFIEDBY" />
-            <property name="ModificationDate" column="A.MODIFIEDAT" alias="MODIFIEDAT" />
-            <property name="Location" column="C.LOCATION" alias="LOCATION" />
-           
+            <property name="DocPriorityId" column="A.DOCPRIORITYID" alias="DOCPRIORITYID"/>
+            <property name="Creator" column="A.CREATEDBY" alias="CREATEDBY"/>
+            <property name="CreationDate" column="A.CREATEDAT" alias="CREATEDAT"/>
+            <property name="Modifier" column="A.MODIFIEDBY" alias="MODIFIEDBY"/>
+            <property name="ModificationDate" column="A.MODIFIEDAT" alias="MODIFIEDAT"/>
+            <property name="Location" column="C.LOCATION" alias="LOCATION"/>
+
         </properties>
 
     </mapping>
-    
+
 </mappings>

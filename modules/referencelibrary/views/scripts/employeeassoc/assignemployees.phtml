@@ -1,40 +1,40 @@
 <?php require_once('coreapp/lib/HTML/header.phtml') ?>
 
 <script type="text/javascript">
-    
-    document.observe("dom:loaded", function() {
-        
-        //wrap EmployeeNumber in div with a count
-        var counterCode = '<div id="empNumContainer" style="margin-left:200px;"><span id="emplCount" style="color:#aaa">0 employees</span><br/></div>';
-        $('EmployeeNumbers').insert({before:counterCode});
-        $('empNumContainer').insert($('EmployeeNumbers'));
-        
-        $('EmployeeNumbers').observe("keyup",function(){
-            updateCount();
-        });
-        updateCount();
-    });
-    
-    function updateCount() {
-        var v = $('EmployeeNumbers').value;
-        var l = v.trim()==='' ? 0 : v.split(/[ ,\n]+/).length;
-        $('emplCount').innerHTML = l + " employees";
-    }
-    
-    function setParticipants(participants,participantcount) {   
-        $('EmployeeNumbers').value = participants;
-        updateCount();
-    }
+
+	document.observe("dom:loaded", function () {
+
+		//wrap EmployeeNumber in div with a count
+		var counterCode = '<div id="empNumContainer" style="margin-left:200px;"><span id="emplCount" style="color:#aaa">0 employees</span><br/></div>';
+		$('EmployeeNumbers').insert({before: counterCode});
+		$('empNumContainer').insert($('EmployeeNumbers'));
+
+		$('EmployeeNumbers').observe("keyup", function () {
+			updateCount();
+		});
+		updateCount();
+	});
+
+	function updateCount() {
+		var v = $('EmployeeNumbers').value;
+		var l = v.trim() === '' ? 0 : v.split(/[ ,\n]+/).length;
+		$('emplCount').innerHTML = l + " employees";
+	}
+
+	function setParticipants(participants, participantcount) {
+		$('EmployeeNumbers').value = participants;
+		updateCount();
+	}
 </script>
 
 <table class="tblheader">
-    <tr>
-        <td align="left">
-            <h1><?php
-                echo $this->escape($this->title);
-                ?></h1>
-        </td>
-    </tr>
+	<tr>
+		<td align="left">
+			<h1><?php
+				echo $this->escape($this->title);
+				?></h1>
+		</td>
+	</tr>
 </table>
 
 <?php

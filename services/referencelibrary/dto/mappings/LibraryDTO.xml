@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<mappings>      
-    
+<mappings>
+
     <mapping stereotype="phpnotes_services_referencelibrary_dto_LibraryDTO" table="ATTACHMENT.REFERENCELIBRARYHEADER">
 
-        <propertymapper class="phpnotes_services_entity_dao_XMLPropertyMapper" />
-        
+        <propertymapper class="phpnotes_services_entity_dao_XMLPropertyMapper"/>
+
 
         <properties>
-            <property name="Id" column="REFLIBHEADERID" /> 
-                        
-            <property name="Description" column="DESCRIPTION" />
-            <property name="DocTypeId" column="DOCTYPEID" />
-            <property name="StartDateTime" column="STARTDATETIME" />
-            <property name="EndDateTime" column="ENDDATETIME" />
-            <property name="DocPriorityId" column="DOCPRIORITYID" />
-        
-            <property name="Creator" column="CREATEDBY" />
-            <property name="CreationDate" column="CREATEDAT" />
-            <property name="Modifier" column="MODIFIEDBY" />
-            <property name="ModificationDate" column="MODIFIEDAT" />
+            <property name="Id" column="REFLIBHEADERID"/>
+
+            <property name="Description" column="DESCRIPTION"/>
+            <property name="DocTypeId" column="DOCTYPEID"/>
+            <property name="StartDateTime" column="STARTDATETIME"/>
+            <property name="EndDateTime" column="ENDDATETIME"/>
+            <property name="DocPriorityId" column="DOCPRIORITYID"/>
+
+            <property name="Creator" column="CREATEDBY"/>
+            <property name="CreationDate" column="CREATEDAT"/>
+            <property name="Modifier" column="MODIFIEDBY"/>
+            <property name="ModificationDate" column="MODIFIEDAT"/>
         </properties>
 
     </mapping>
-    
+
 </mappings>

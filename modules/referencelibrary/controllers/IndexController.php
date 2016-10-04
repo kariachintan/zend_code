@@ -1,9 +1,11 @@
 <?php
 
-class referencelibrary_IndexController extends Core_Controller_Action {
+class referencelibrary_IndexController extends Core_Controller_Action
+{
 
-	function indexAction() {
+	function indexAction()
+	{
 		$this->_redirect('/referencelibrary/library/listing');
-	}	
-    
+	}
+
 }
